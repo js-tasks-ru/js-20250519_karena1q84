@@ -7,11 +7,11 @@
 export function sortStrings(arr, param = 'asc') {
   const sortedArray = [...arr];
 
-  const compareFn = (caseFirst) => (a, b) => a.localeCompare(b, ['ru', 'en'], {caseFirst: caseFirst});
+  const compareFn = (a, b) => a.localeCompare(b, ['ru', 'en'], {caseFirst: 'upper'});
 
   if (param === 'asc') {
-    return sortedArray.sort(compareFn('upper'));
+    return sortedArray.sort((a, b) => compareFn(a, b));
   } else {
-    return sortedArray.sort(compareFn('lower')).reverse();
+    return sortedArray.sort((a, b) => compareFn(b, a));
   }
 }
