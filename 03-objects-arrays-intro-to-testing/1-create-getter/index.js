@@ -5,4 +5,17 @@
  */
 export function createGetter(path) {
 
+  let props = path.split('.');
+
+  return (obj) => {
+    for (let value of props) {
+      if (obj.hasOwnProperty(value) && obj[value] !== undefined) {
+        obj = obj[value];
+      }
+      else {
+        return;
+      }
+    }
+    return obj;
+  };
 }
