@@ -6,4 +6,25 @@
  */
 export function trimSymbols(string, size) {
 
+  let lastChar;
+  let counter = 0;
+  let result = '';
+
+  for (const char of string) {
+    if (char === lastChar) {
+      counter++;
+    } else {
+      counter = 1;
+    }
+
+    lastChar = char;
+
+    if (counter > size) {
+      continue;
+    }
+
+    result += char;
+  }
+
+  return result;
 }
